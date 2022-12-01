@@ -4,10 +4,11 @@ import {HashRouter, Link, Route, Routes, useNavigate, useLocation} from "react-r
 import * as service from "../../services/auth-service"
 import MyLikes from "./my-likes";
 import MyDislikes from "./my-dislikes";
+
 const Profile = () => {
   const navigate = useNavigate();
   const location = useLocation();
-
+ 
   const [profile, setProfile] = useState({});
   useEffect(async () => {
     try {
@@ -21,7 +22,7 @@ const Profile = () => {
     service.logout()
         .then(() => navigate('/login'));
   }
-
+  
   return(
     <div className="ttr-profile">
       <div className="border border-bottom-0">
@@ -84,32 +85,25 @@ const Profile = () => {
                 Media</Link>
             </li>
             <li className="nav-item">
-             <Link to="/profile/mylikes"
-                   className="nav-link">
-               My Likes</Link>
-           </li>
-           <li className="nav-item">
-           <Link to="/profile/Mydislikes"
-                 className="nav-link">
-             My Dislikes</Link>
-         </li>
-
+              <Link to="/profile/mylikes"
+                    className="nav-link">
+                My Likes</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/profile/mydislikes"
+                    className="nav-link">
+                My Dislikes</Link>
+            </li>
+            
+             
           </ul>
         </div>
       </div>
-      <Routes>
-        <Route path="/mytuits"
-               element={<MyTuits/>}/>
-        <Route path="/mylikes"
-        element={<MyLikes/>}/>
-        <Route path="/mydislikes"
-        element={<MyDislikes/>}/>
-
-
-
-      </Routes>
-
-
+        <Routes>
+          <Route path="/mytuits" element={<MyTuits/>}/>
+          <Route path="/mylikes" element={<MyLikes/>}/>
+          <Route path="/mydislikes" element={<MyDislikes/>}/>
+        </Routes>
     </div>
   );
 }
