@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-export const UserList = ({users, deleteUser}) => {
+export const UserList = ({users, deleteUser,}) => {
   return (
     <div className="list-group">
       {

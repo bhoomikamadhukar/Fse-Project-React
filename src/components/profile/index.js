@@ -4,11 +4,13 @@ import {HashRouter, Link, Route, Routes, useNavigate, useLocation} from "react-r
 import * as service from "../../services/auth-service"
 import MyLikes from "./my-likes";
 import MyDislikes from "./my-dislikes";
-
+import AllUsers from "./allUsers";
+import CreateUser from "./create-user";
+import EditUser from "./adminUpdates";
 const Profile = () => {
   const navigate = useNavigate();
   const location = useLocation();
- 
+
   const [profile, setProfile] = useState({});
   useEffect(async () => {
     try {
@@ -22,7 +24,7 @@ const Profile = () => {
     service.logout()
         .then(() => navigate('/login'));
   }
-  
+
   return(
     <div className="ttr-profile">
       <div className="border border-bottom-0">
@@ -74,16 +76,7 @@ const Profile = () => {
                     className={`nav-link ${location.pathname.indexOf('mytuits') >= 0 ? 'active':''}`}>
                 Tuits</Link>
             </li>
-            <li className="nav-item">
-              <Link to="/profile/tuits-and-replies"
-                    className={`nav-link ${location.pathname.indexOf('tuits-and-replies') >= 0 ? 'active':''}`}>
-                Tuits & replies</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/profile/media"
-                    className={`nav-link ${location.pathname.indexOf('media') >= 0 ? 'active':''}`}>
-                Media</Link>
-            </li>
+          
             <li className="nav-item">
               <Link to="/profile/mylikes"
                     className="nav-link">
@@ -94,8 +87,30 @@ const Profile = () => {
                     className="nav-link">
                 My Dislikes</Link>
             </li>
-            
-             
+            {profile.role === "ADMIN" ? (
+            <li className="nav-item">
+              <Link to="/profile/allusers"
+                className="nav-link">
+                View All Users</Link>
+            </li>
+          ) : null}
+          {profile.role === "ADMIN" ? (
+          <li className="nav-item">
+            <Link to="/profile/createuser"
+              className="nav-link">
+              Create New User</Link>
+          </li>
+        ) : null}
+        {profile.role === "ADMIN" ? (
+        <li className="nav-item">
+          <Link to="/profile/updateUser"
+            className="nav-link">
+            Update User</Link>
+        </li>
+      ) : null}
+
+
+
           </ul>
         </div>
       </div>
@@ -103,6 +118,9 @@ const Profile = () => {
           <Route path="/mytuits" element={<MyTuits/>}/>
           <Route path="/mylikes" element={<MyLikes/>}/>
           <Route path="/mydislikes" element={<MyDislikes/>}/>
+          <Route path="/allusers" element={<AllUsers />} />
+          <Route path="/createuser" element={<CreateUser />} />
+            <Route path="/updateUser" element={<EditUser />} />
         </Routes>
     </div>
   );

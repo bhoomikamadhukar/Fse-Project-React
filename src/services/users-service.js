@@ -11,6 +11,10 @@ export const createUser = (user) =>
   axios.post(`${USERS_API}`, user)
     .then(response => response.data);
 
+export const updateUser = (uid) =>
+  axios.put(`${USERS_API}/${uid}`)
+    .then(response => response.data);
+
 export const findAllUsers = () =>
   axios.get(USERS_API)
     .then(response => response.data);
