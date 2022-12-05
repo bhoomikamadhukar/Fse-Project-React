@@ -6,7 +6,9 @@ import MyLikes from "./my-likes";
 import MyDislikes from "./my-dislikes";
 import AllUsers from "./allUsers";
 import CreateUser from "./create-user";
-import EditUser from "./adminUpdates";
+import {UserList} from "./user-list";
+// import AdminProfile from "../admin"
+
 const Profile = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -76,7 +78,7 @@ const Profile = () => {
                     className={`nav-link ${location.pathname.indexOf('mytuits') >= 0 ? 'active':''}`}>
                 Tuits</Link>
             </li>
-          
+
             <li className="nav-item">
               <Link to="/profile/mylikes"
                     className="nav-link">
@@ -120,7 +122,9 @@ const Profile = () => {
           <Route path="/mydislikes" element={<MyDislikes/>}/>
           <Route path="/allusers" element={<AllUsers />} />
           <Route path="/createuser" element={<CreateUser />} />
-            <Route path="/updateUser" element={<EditUser />} />
+          <Route path="/updateUser" exact={true} element={<UserList/>}>
+
+              </Route>
         </Routes>
     </div>
   );

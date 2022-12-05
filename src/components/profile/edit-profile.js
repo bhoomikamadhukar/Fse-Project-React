@@ -25,7 +25,7 @@ const EditProfile = () => {
           <form action="profile.html">
             <div className="border border-secondary rounded-3 p-2 mb-3">
               <label htmlFor="username">Username</label>
-              <input id="username" title="Username" readOnly
+              <input id="username" title="Username"
                      className="p-0 form-control border-0"
                      placeholder="alan" value="alan"/>
             </div>

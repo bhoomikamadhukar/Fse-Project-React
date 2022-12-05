@@ -16,7 +16,7 @@ import {Login} from "../profile/login";
 import {Signup} from "../profile/signup";
 import Movies from "../movies";
 import MovieDetails from "../movies/details";
-import Admin from "../admin";
+
 // import {CreateUser} from "../admin/create-user"
 // import {Users} from "../admin"
 
@@ -49,8 +49,7 @@ function Tuiter () {
               <Route path="/more" element={<More/>}/>
 
               {/*<Route path="/admin" element={<Admin/>}/>*/}
-              <Route path="/admin/*" element={<Admin/>}/>
-              <Route path="/admin" element={<Admin/>}/>
+    
 
             </Routes>
           </div>

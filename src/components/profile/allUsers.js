@@ -14,6 +14,10 @@ const AllUsers = () => {
         userService.deleteUser(uid)
             .then(findAllUsers)
 
+    const updateUser = (uid,existingUsers) =>
+        userService.updateUser(uid,existingUsers)
+            .then(console.log("success"))
+
     const findAllUsers = () =>
         userService.findAllUsersAsAdmin()
             .then(users => {
@@ -25,7 +29,7 @@ const AllUsers = () => {
         <div>
           <h1>Existing Users</h1>
 
-          <UserList users={existingUsers} deleteUser={deleteUser}/>
+          <UserList users={existingUsers} deleteUser={deleteUser} updateUser={updateUser}/>
 
         </div>
   );
