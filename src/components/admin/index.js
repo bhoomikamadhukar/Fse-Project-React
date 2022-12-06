@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import * as service
+    from "../../services/users-service";
 
 const UpdateUser = () => {
     const { uid } = useParams();
+
 
     //const [empdata, empdatachange] = useState({});
 
@@ -26,13 +29,16 @@ const UpdateUser = () => {
 
 
     const navigate=useNavigate();
-
+    const navigateToUser = ()=>{
+      navigate(`/profile/allUsers/`);
+    }
     const handlesubmit=(e)=>{
       e.preventDefault();
       const userdata={name,email};
 
-
-      fetch("http://localhost:4000/api/users/"+uid,{
+    console.log(uid)
+      fetch("http://localhost:4000/api/users/"+uid
+      ,{
         method:"PUT",
         headers:{"content-type":"application/json"},
         body:JSON.stringify(userdata)
@@ -48,7 +54,7 @@ const UpdateUser = () => {
         <div>
 
         <div className="row">
-            <div className="offset-lg-3 col-lg-6">
+            <div className="col-lg-12">
                 <form className="container" onSubmit={handlesubmit}>
 
                     <div className="card" style={{"textAlign":"left"}}>
@@ -80,8 +86,8 @@ const UpdateUser = () => {
 
                                 <div className="col-lg-12">
                                     <div className="form-group">
-                                       <button className="btn btn-success" type="submit">Save</button>
-                                       <Link to="/" className="btn btn-danger">Back</Link>
+                                       <button className="btn btn-success col-lg-3 offset-lg-2" type="submit">Save</button>
+                                       <button onClick={navigateToUser} className="btn btn-danger col-lg-3 offset-lg-2">Back</button>
                                     </div>
                                 </div>
 

@@ -96,20 +96,6 @@ const Profile = () => {
                 View All Users</Link>
             </li>
           ) : null}
-          {profile.role === "ADMIN" ? (
-          <li className="nav-item">
-            <Link to="/profile/createuser"
-              className="nav-link">
-              Create New User</Link>
-          </li>
-        ) : null}
-        {profile.role === "ADMIN" ? (
-        <li className="nav-item">
-          <Link to="/profile/updateUser"
-            className="nav-link">
-            Update User</Link>
-        </li>
-      ) : null}
 
 
 
@@ -122,9 +108,9 @@ const Profile = () => {
           <Route path="/mydislikes" element={<MyDislikes/>}/>
           <Route path="/allusers" element={<AllUsers />} />
           <Route path="/createuser" element={<CreateUser />} />
-          <Route path="/updateUser" exact={true} element={<UserList/>}>
 
-              </Route>
+
+
         </Routes>
     </div>
   );
