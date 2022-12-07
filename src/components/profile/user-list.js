@@ -9,10 +9,13 @@ export const UserList = ({users, deleteUser}) => {
           return (
             <Link className="list-group-item"
                   key={user._id}
-                  to={`/home/${user._id}`}>
+                  to={`/admin/users/${user._id}`}>
           <span className="fs-3">
-            {user.username}
+            Name : {user.username}
+{' '}
+Role: {user.role}
           </span>
+
               <button onClick={(e) => {
                 e.stopPropagation()
                 e.preventDefault()
