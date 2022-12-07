@@ -7,24 +7,10 @@ const UpdateUser = () => {
     const { uid } = useParams();
 
 
-    //const [empdata, empdatachange] = useState({});
 
-    // useEffect(() => {
-    //     fetch("http://localhost:4000/api/user/" + uid).then((res) => {
-    //         return res.json();
-    //     }).then((resp) => {
-    //         namechange(resp.username);
-    //         emailchange(resp.email);
-    //
-    //     }).catch((err) => {
-    //         console.log(err.message);
-    //     })
-    // }, []);
-
-
-    const[name,namechange]=useState("");
+    const[username,namechange]=useState("");
     const[email,emailchange]=useState("");
-
+    const[password,passwordChange]=useState("");
     const[validation,valchange]=useState(false);
 
 
@@ -34,7 +20,7 @@ const UpdateUser = () => {
     }
     const handlesubmit=(e)=>{
       e.preventDefault();
-      const userdata={name,email};
+      const userdata={username,email,password};
 
     console.log(uid)
       fetch("http://localhost:4000/api/users/"+uid
@@ -70,8 +56,8 @@ const UpdateUser = () => {
                                 <div className="col-lg-12">
                                     <div className="form-group">
                                         <label>Name</label>
-                                        <input required value={name} onMouseDown={e=>valchange(true)} onChange={e=>namechange(e.target.value)} className="form-control"></input>
-                                    {name.length==0 && validation && <span className="text-danger">Enter the name</span>}
+                                        <input required value={username} onMouseDown={e=>valchange(true)} onChange={e=>namechange(e.target.value)} className="form-control"></input>
+                                    {username.length==0 && validation && <span className="text-danger">Enter the user name</span>}
                                     </div>
                                 </div>
 
@@ -79,6 +65,13 @@ const UpdateUser = () => {
                                     <div className="form-group">
                                         <label>Email</label>
                                         <input value={email} onChange={e=>emailchange(e.target.value)} className="form-control"></input>
+                                    </div>
+                                </div>
+
+                                <div className="col-lg-12">
+                                    <div className="form-group">
+                                        <label>Password</label>
+                                        <input value={password} onChange={e=>passwordChange(e.target.value)} className="form-control"></input>
                                     </div>
                                 </div>
 
