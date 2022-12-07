@@ -1,101 +1,100 @@
-import React, {useEffect, useState} from "react";
-import AllUsers from "./allUsers";
-import {HashRouter, Link, Route, Routes, useNavigate, useLocation} from "react-router-dom";
-import * as service from "../../services/auth-service"
+import { useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import * as service
+    from "../../services/users-service";
 
-import CreateUser from "./create-user"
-const AdminProfile = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
+const UpdateUser = () => {
+    const { uid } = useParams();
 
-  const [profile, setProfile] = useState({});
-  useEffect(async () => {
-    try {
-      const user = await service.profile();
-      setProfile(user);
-    } catch (e) {
-      navigate('/login');
+
+
+    const[username,namechange]=useState("");
+    const[email,emailchange]=useState("");
+    const[password,passwordChange]=useState("");
+    const[validation,valchange]=useState(false);
+
+
+    const navigate=useNavigate();
+    const navigateToUser = ()=>{
+      navigate(`/profile/allUsers/`);
     }
-  }, []);
-  const logout = () => {
-    service.logout()
-        .then(() => navigate('/login'));
-  }
+    const handlesubmit=(e)=>{
+      e.preventDefault();
+      const userdata={username,email,password};
 
-  return(
-    <div className="ttr-profile">
-      <div className="border border-bottom-0">
-        <h4 className="p-2 mb-0 pb-0 fw-bolder">
-          {profile.username}
-          <i className="fa fa-badge-check text-primary"></i></h4>
-        <span className="ps-2">67.6K Tuits</span>
-        <div className="mb-5 position-relative">
-          <img className="w-100" src="../images/nasa-profile-header.jpg"/>
-          <div className="bottom-0 left-0 position-absolute">
-            <div className="position-relative">
-              <img className="position-relative ttr-z-index-1 ttr-top-40px ttr-width-150px"
-                   src="../images/nasa-3.png"/>
+    console.log(uid)
+      fetch("http://localhost:4000/api/users/"+uid
+      ,{
+        method:"PUT",
+        headers:{"content-type":"application/json"},
+        body:JSON.stringify(userdata)
+      }).then((res)=>{
+        alert('Saved successfully.')
+        navigate('/');
+      }).catch((err)=>{
+        console.log(err.message)
+      })
+
+    }
+    return (
+        <div>
+
+        <div className="row">
+            <div className="col-lg-12">
+                <form className="container" onSubmit={handlesubmit}>
+
+                    <div className="card" style={{"textAlign":"left"}}>
+                        <div className="card-title">
+                            <h2>User Edit</h2>
+                        </div>
+                        <div className="card-body">
+
+                            <div className="row">
+
+
+
+                                <div className="col-lg-12">
+                                    <div className="form-group">
+                                        <label>Name</label>
+                                        <input required value={username} onMouseDown={e=>valchange(true)} onChange={e=>namechange(e.target.value)} className="form-control"></input>
+                                    {username.length==0 && validation && <span className="text-danger">Enter the user name</span>}
+                                    </div>
+                                </div>
+
+                                <div className="col-lg-12">
+                                    <div className="form-group">
+                                        <label>Email</label>
+                                        <input value={email} onChange={e=>emailchange(e.target.value)} className="form-control"></input>
+                                    </div>
+                                </div>
+
+                                <div className="col-lg-12">
+                                    <div className="form-group">
+                                        <label>Password</label>
+                                        <input value={password} onChange={e=>passwordChange(e.target.value)} className="form-control"></input>
+                                    </div>
+                                </div>
+
+
+
+                                <div className="col-lg-12">
+                                    <div className="form-group">
+                                       <button className="btn btn-success col-lg-3 offset-lg-2" type="submit">Save</button>
+                                       <button onClick={navigateToUser} className="btn btn-danger col-lg-3 offset-lg-2">Back</button>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
             </div>
-          </div>
-          <Link to="/profile/edit"
-                className="mt-2 me-2 btn btn-large btn-light border border-secondary fw-bolder rounded-pill fa-pull-right">
-            Edit profile
-          </Link>
-          <button onClick={logout} className="mt-2 float-end btn btn-warning rounded-pill">
-            Logout
-          </button>
         </div>
-
-        <div className="p-2">
-          <h4 className="fw-bolder pb-0 mb-0">
-            {profile.username}<i className="fa fa-badge-check text-primary"></i>
-          </h4>
-          <h6 className="pt-0">@{profile.username}</h6>
-          <p className="pt-2">
-            There's space for everybody. Sparkles
-          </p>
-          <p>
-            <i className="far fa-location-dot me-2"></i>
-            Pale Blue Dot
-            <i className="far fa-link ms-3 me-2"></i>
-            <a href="nasa.gov" className="text-decoration-none">nasa.gov</a>
-            <i className="far fa-balloon ms-3 me-2"></i>
-            Born October 1, 1958
-            <br/>
-            <i className="far fa-calendar me-2"></i>
-            Joined December 2007
-          </p>
-          <b>178</b> Following
-          <b className="ms-4">51.1M</b> Followers
-          <ul className="mt-4 nav nav-pills nav-fill">
-            <li className="nav-item">
-              <Link to="/admin/allusers"
-                    className={`nav-link ${location.pathname.indexOf('allusers') >= 0 ? 'active':''}`}>
-                Users</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/admin/createUser"
-                    className={`nav-link ${location.pathname.indexOf('tuits-and-replies') >= 0 ? 'active':''}`}>
-                Create New User</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/profile/media"
-                    className={`nav-link ${location.pathname.indexOf('media') >= 0 ? 'active':''}`}>
-                Media</Link>
-            </li>
-
-
-
-          </ul>
-        </div>
-      </div>
-        <Routes>
-          <Route path="/allusers" element={<AllUsers/>}/>
-          <Route path="/createuser" element={<CreateUser/>}/>
-
-        </Routes>
     </div>
-  );
+     );
 }
-
-export default AdminProfile;
+export default UpdateUser;
