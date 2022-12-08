@@ -1,7 +1,7 @@
 import {
     createUser,
     deleteUsersByUsername, findAllUsers, findAllUsersAsAdmin,
-    findUserById
+    findUserById, updateUser
 } from "../services/users-service";
 
 describe('createUser', () => {
@@ -157,52 +157,41 @@ describe('findAllUsers',  () => {
     });
 });
 
-describe('updateUserAsAdmin',  () => {
+describe('update user as admin',  () => {
 
-    // sample users we'll insert to then retrieve
-    const usernames = [
-        "larry", "curley", "moe"
-    ];
+    const ripley1 = {
+        username: 'ellenripley1',
+        password: 'lv4261',
+        email: 'ellenriple1y@aliens.com'
+    };
 
-    // setup data before test
-    beforeAll(() =>
-        // insert several known users
-        usernames.map(username =>
-            createUser({
-                username,
-                password: `${username}123`,
-                email: `${username}@stooges.com`
-            })
-        )
-    );
+    const ripleyUpdated = {
+        username: 'ellenripley2',
+        password: 'lv4261',
+        email: 'ellenriple1y@aliens.com'
+    }
 
-    // clean up after ourselves
-    afterAll(() =>
-        // delete the users we inserted
-        usernames.map(username =>
-            deleteUsersByUsername(username)
-        )
-    );
+    // setup test before running test
+    beforeAll(() => {
+        // remove any/all users to make sure we create it in the test
+        return deleteUsersByUsername(ripley1.username);
+    })
 
-    test('can retrieve all users from REST API', async () => {
+    // clean up after test runs
+    afterAll(() => {
+        // remove any data we created
+        return deleteUsersByUsername(ripley1.username);
+    })
+
+    test('update user as admin', async () => {
         // retrieve all the users
-        const users = await findAllUsersAsAdmin();
+        const ripley1 = await updateUser(ripleyUpdated);
         // console.log(users);
         // there should be a minimum number of users
-        expect(users.length).toBeGreaterThanOrEqual(usernames.length);
-
-        // let's check each user we inserted
-        const usersWeInserted = users.filter(
-            user => usernames.indexOf(user.username) >= 0);
-
-        // compare the actual users in database with the ones we sent
-        usersWeInserted.forEach(user => {
-            const username = usernames.find(username => username === user.username);
-            expect(user.username).toEqual(username);
-            expect(user.password).toEqual(`${username}123`);
-            expect(user.email).toEqual(`${username}@stooges.com`);
+        expect(ripley1.username).toEqual(ripleyUpdated.username);
+        expect(ripley1.password).toEqual(ripleyUpdated.password);
+        expect(ripley1.email).toEqual(ripleyUpdated.email);
         });
-    });
 });
 
 
