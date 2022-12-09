@@ -4,10 +4,15 @@ import { HashRouter, Link, Route, Routes, useNavigate, useLocation } from "react
 import * as service from "../../services/auth-service"
 import MyLikes from "./my-likes";
 import MyDislikes from "./my-dislikes";
+<<<<<<< HEAD
+import UserList from "./user-list";
+
+=======
 import AllUsers from "./allUsers";
 import CreateUser from "./create-user";
 import {UserList} from "./user-list";
 // import AdminProfile from "../admin"
+>>>>>>> faf490e667dd4a48f377bd3f2f689a2fe3bd1d68
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -27,7 +32,11 @@ const Profile = () => {
       .then(() => navigate('/login'));
   }
 
+<<<<<<< HEAD
+  return (
+=======
   return(
+>>>>>>> faf490e667dd4a48f377bd3f2f689a2fe3bd1d68
     <div className="ttr-profile">
       <div className="border border-bottom-0">
         <h4 className="p-2 mb-0 pb-0 fw-bolder">
@@ -78,6 +87,20 @@ const Profile = () => {
                 className={`nav-link ${location.pathname.indexOf('mytuits') >= 0 ? 'active' : ''}`}>
                 Tuits</Link>
             </li>
+<<<<<<< HEAD
+            <li className="nav-item">
+              <Link to="/profile/tuits-and-replies"
+                className={`nav-link ${location.pathname.indexOf('tuits-and-replies') >= 0 ? 'active' : ''}`}>
+                Tuits & replies</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/profile/media"
+                className={`nav-link ${location.pathname.indexOf('media') >= 0 ? 'active' : ''}`}>
+                Media</Link>
+            </li>
+=======
+
+>>>>>>> faf490e667dd4a48f377bd3f2f689a2fe3bd1d68
             <li className="nav-item">
               <Link to="/profile/mylikes"
                 className="nav-link">
@@ -89,6 +112,14 @@ const Profile = () => {
                 My Dislikes</Link>
             </li>
             {profile.role === "ADMIN" ? (
+<<<<<<< HEAD
+              <li className="nav-item">
+                <Link to="/profile/allusers"
+                  className="nav-link">
+                  ADMIN</Link>
+              </li>
+            ) : null}
+=======
             <li className="nav-item">
               <Link to="/profile/allusers"
                 className="nav-link">
@@ -96,11 +127,20 @@ const Profile = () => {
             </li>
           ) : null}
 
+>>>>>>> faf490e667dd4a48f377bd3f2f689a2fe3bd1d68
 
 
           </ul>
         </div>
       </div>
+<<<<<<< HEAD
+      <Routes>
+        <Route path="/mytuits" element={<MyTuits />} />
+        <Route path="/mylikes" element={<MyLikes />} />
+        <Route path="/mydislikes" element={<MyDislikes />} />
+        <Route path="/allusers" element={<UserList />} />
+      </Routes>
+=======
         <Routes>
           <Route path="/mytuits" element={<MyTuits/>}/>
           <Route path="/mylikes" element={<MyLikes/>}/>
@@ -111,6 +151,7 @@ const Profile = () => {
 
 
         </Routes>
+>>>>>>> faf490e667dd4a48f377bd3f2f689a2fe3bd1d68
     </div>
   );
 }

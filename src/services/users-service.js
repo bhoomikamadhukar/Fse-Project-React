@@ -6,13 +6,32 @@ const BASE_URL = "http://localhost:4000";
 const LOGIN_API = `${BASE_URL}/api/login`;
 const USERS_API = `${BASE_URL}/api/users`;
 
+
 export const createUser = (user) =>
   axios.post(`${USERS_API}`, user)
     .then(response => response.data);
 
+  export const updateUser = (user) =>
+    axios.put(`${USERS_API}/${user.id}`, user)
+      .then((response) => response.data)
+
+
+// export const updateUser = (uid,user) =>
+//     fetch(`${USERS_API}/${uid}`, {
+//         method: 'PUT',
+//         body: JSON.stringify(user),
+//         headers: {'content-type': 'application/json'}
+//     })
+//         .then(response => response.data)
+
+
 export const findAllUsers = () =>
   axios.get(USERS_API)
     .then(response => response.data);
+
+  export const findAllUsersAsAdmin = () =>
+    axios.get(`${USERS_API}`)
+      .then(response => response.data);
 
 export const findUserById = (uid) =>
   axios.get(`${USERS_API}/${uid}`)

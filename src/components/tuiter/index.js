@@ -16,6 +16,9 @@ import {Login} from "../profile/login";
 import {Signup} from "../profile/signup";
 import Movies from "../movies";
 import MovieDetails from "../movies/details";
+import UpdateUser from "../admin";
+// import {CreateUser} from "../admin/create-user"
+// import {Users} from "../admin"
 
 function Tuiter () {
   return(
@@ -44,6 +47,12 @@ function Tuiter () {
               <Route path="/movies" element={<Movies/>}/>
               <Route path="/movies/:imdbID" element={<MovieDetails/>}/>
               <Route path="/more" element={<More/>}/>
+              <Route path="/admin" element={<UpdateUser/>}/>
+              <Route path="/admin/users/:uid" element={<UpdateUser/>}/>
+
+
+
+
             </Routes>
           </div>
           <div className="ttr-right-column">
