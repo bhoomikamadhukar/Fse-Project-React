@@ -8,9 +8,12 @@ We are interested in building this feature as this will provide the admin with a
 Instructions to setup the frontend of the application
  
 Step 1 - git clone https://github.com/bhoomikamadhukar/Fse-Project-React
+
 Step 2 - npm install
+
 Step 3 - npm start
-Step 5 - The frontend will start running at the following URL http://localhost:3000.
+
+Step 4 - The frontend will start running at the following URL http://localhost:3000.
 
 Screenshots of the application
 
