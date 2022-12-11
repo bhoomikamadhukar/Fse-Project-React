@@ -27,3 +27,30 @@ const links = [
     {label: 'Login', expect: {textOnScreen: 'ellenripley'}, icon: 'fa-user', path: '/login'},
 ];
 
+describe('test123', () => {
+    beforeEach(() => {
+        act(() => {
+            render(<Tuiter/>)
+        });
+    });
+    links.forEach((link, nth) => {
+        const testName = `Clicking on ${link.label} navigates to new screen`;
+        test(testName, async () => {
+            act(() => {
+                // get all the links
+                const a = document.querySelectorAll("a");
+                // click on the nth link
+                fireEvent.click(a[nth]);
+            })
+            // const regex = new RegExp(link.expect.textOnScreen, "i");
+            // const linkElement = await screen.getByText(regex);
+            // expect(linkElement).toBeInTheDocument();
+
+            await waitFor(() => {
+                const regex = new RegExp(link.expect.textOnScreen, "i");
+                const linkElement = screen.getByText(regex);
+                expect(linkElement).toBeInTheDocument();
+            });
+        });
+    });
+});
