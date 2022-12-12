@@ -11,18 +11,18 @@ export const createUser = (user) =>
   axios.post(`${USERS_API}`, user)
     .then(response => response.data);
 
-  export const updateUser = (user) =>
-    axios.put(`${USERS_API}/${user.id}`, user)
-      .then((response) => response.data)
+  // export const updateUser = (user) =>
+  //   axios.put(`${USERS_API}/${user.id}`, user)
+  //     .then((response) => response.data)
 
 
-// export const updateUser = (uid,user) =>
-//     fetch(`${USERS_API}/${uid}`, {
-//         method: 'PUT',
-//         body: JSON.stringify(user),
-//         headers: {'content-type': 'application/json'}
-//     })
-//         .then(response => response.data)
+export const updateUser = (uid,user) =>
+    fetch(`${USERS_API}/${uid}`, {
+        method: 'PUT',
+        body: JSON.stringify(user),
+        headers: {'content-type': 'application/json'}
+    })
+        .then(response => response.data)
 
 
 export const findAllUsers = () =>
