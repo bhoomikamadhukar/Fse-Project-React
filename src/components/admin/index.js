@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import * as service
     from "../../services/users-service";
+    import bcrypt from 'bcryptjs'
+    const saltRounds = bcrypt.genSaltSync(10);
 
 const UpdateUser = () => {
     const { uid } = useParams();
@@ -20,7 +22,17 @@ const UpdateUser = () => {
     }
     const handlesubmit=(e)=>{
       e.preventDefault();
-      const userdata={username,email,password};
+      const userdata={}
+      if (username!==""){
+        userdata.username=username;
+      }
+      if (password!==""){
+        userdata.password=bcrypt.hashSync(password,saltRounds);
+      }
+      if (email!==""){
+        userdata.email=email;
+      }
+      
 
     console.log(uid)
       fetch("http://localhost:4000/api/users/"+uid
@@ -56,8 +68,8 @@ const UpdateUser = () => {
                                 <div className="col-lg-12">
                                     <div className="form-group">
                                         <label>Name</label>
-                                        <input required value={username} onMouseDown={e=>valchange(true)} onChange={e=>namechange(e.target.value)} className="form-control"></input>
-                                    {username.length==0 && validation && <span className="text-danger">Enter the user name</span>}
+                                        <input value={username} onMouseDown={e=>valchange(true)} onChange={e=>namechange(e.target.value)} className="form-control"></input>
+                                  
                                     </div>
                                 </div>
 
