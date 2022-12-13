@@ -18,6 +18,9 @@ Step 4 - The frontend will start running at the following URL http://localhost:3
 Screenshots of the application
 
 Create User Page - Admin Side
+
+![image](https://user-images.githubusercontent.com/78371437/207206591-47754442-80b8-4682-b863-985238b89c40.png)
+
 View Users Page - Admin Side
 Update User Page - Admin Side
 Delete User Page  -  Admin Side
