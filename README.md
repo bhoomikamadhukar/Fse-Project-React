@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+This is the frontend (react) repository of our project. There are various feature branches and the main branch has everything merged into it. The link to the frontend (react) repository is - https://github.com/bhoomikamadhukar/Fse-Project-React.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Overview of the Proposed Feature
 
-## Available Scripts
+We are creating admin tools for managing users including creation, updation, deletion and viewing of the user accounts. The proposed feature allows the administration to manage users in this tuiter application. The administrator can create, update, delete and retrieve user accounts. This feature will allow admin to create an account on behalf of the user. This will also provide access to the admin to control and manage user accounts that are inactive for a prolonged time by deleting them. The administrator can also control the access level of user accounts.  
+We are interested in building this feature as this will provide the admin with a UI which allows the admin to retrieve, manage and control user accounts without having to bother with the technical details of the application. This tool has a lot more use cases such as flagging of users, access level control, etc. Being able to create user accounts will also help the development phase of this application to create users and test out the features. 
+ 
+Instructions to setup the frontend of the application
+ 
+Step 1 - git clone https://github.com/bhoomikamadhukar/Fse-Project-React
 
-In the project directory, you can run:
+Step 2 - npm install
 
-### `npm start`
+Step 3 - npm start
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Step 4 - The frontend will start running at the following URL http://localhost:3000.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Screenshots of the application
 
-### `npm test`
+Create User Page - Admin Side
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![image](https://user-images.githubusercontent.com/78371437/207206591-47754442-80b8-4682-b863-985238b89c40.png)
 
-### `npm run build`
+View Users Page - Admin Side
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![image](https://user-images.githubusercontent.com/78371437/207206722-8158663a-d8e6-4626-a776-8ff2137541bc.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Update User Page - Admin Side
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![image](https://user-images.githubusercontent.com/78371437/207207095-229a62ca-c91a-4e74-8d9a-4b9e652bb1b1.png)
 
-### `npm run eject`
+Delete User Page  -  Admin Side
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![image](https://user-images.githubusercontent.com/78371437/207206895-f7d76f86-345a-40de-99a6-e128750800c8.png)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
