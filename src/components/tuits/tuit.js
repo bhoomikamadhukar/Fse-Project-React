@@ -17,6 +17,7 @@ const Tuit = ({tuit, deleteTuit, likeTuit, dislikeTuit}) => {
           <i onClick={() => deleteTuit(tuit._id)} className="fas fa-remove fa-2x fa-pull-right"></i>
         <h2
           className="fs-5">
+          
           {tuit.postedBy && tuit.postedBy.username}
           @{tuit.postedBy && tuit.postedBy.username} -
           {tuit.published}</h2>

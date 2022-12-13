@@ -20,33 +20,28 @@ const UpdateUser = () => {
     }
     const handlesubmit=(e)=>{
       e.preventDefault();
-
+      const userdata={username,email,password};
 
     console.log(uid)
-
-      // fetch("http://localhost:4000/api/users/"+uid
-      // ,{
-      //   method:"PUT",
-      //   headers:{"content-type":"application/json"},
-      //   body:JSON.stringify(userdata)
-      // }).then((res)=>{
-      //   alert('Saved successfully.')
-      //   navigate('/');
-      // }).catch((err)=>{
-      //   console.log(err.message)
-      // })
+      fetch("http://localhost:4000/api/users/"+uid
+      ,{
+        method:"PUT",
+        headers:{"content-type":"application/json"},
+        body:JSON.stringify(userdata)
+      }).then((res)=>{
+        alert('Saved successfully.')
+        navigate('/profile');
+      }).catch((err)=>{
+        console.log(err.message)
+      })
 
     }
-    const updateUser = (uid,userdata) =>
-        service.updateUser(userdata)
-            .then(alert('Saved successfully.'),
-              navigate('/'))
     return (
         <div>
 
         <div className="row">
             <div className="col-lg-12">
-                <form className="container" onSubmit={updateUser}>
+                <form className="container" onSubmit={handlesubmit}>
 
                     <div className="card" style={{"textAlign":"left"}}>
                         <div className="card-title">
@@ -76,7 +71,7 @@ const UpdateUser = () => {
                                 <div className="col-lg-12">
                                     <div className="form-group">
                                         <label>Password</label>
-                                        <input value={password} onChange={e=>passwordChange(e.target.value)} className="form-control"></input>
+                                        <input value={password} onChange={e=>passwordChange(e.target.value)} className="form-control" placeholder="password"></input>
                                     </div>
                                 </div>
 
