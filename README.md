@@ -22,7 +22,16 @@ Create User Page - Admin Side
 ![image](https://user-images.githubusercontent.com/78371437/207206591-47754442-80b8-4682-b863-985238b89c40.png)
 
 View Users Page - Admin Side
+
+![image](https://user-images.githubusercontent.com/78371437/207206722-8158663a-d8e6-4626-a776-8ff2137541bc.png)
+
 Update User Page - Admin Side
+
+![image](https://user-images.githubusercontent.com/78371437/207207095-229a62ca-c91a-4e74-8d9a-4b9e652bb1b1.png)
+
 Delete User Page  -  Admin Side
+
+![image](https://user-images.githubusercontent.com/78371437/207206895-f7d76f86-345a-40de-99a6-e128750800c8.png)
+
 
 
